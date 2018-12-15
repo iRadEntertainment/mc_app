@@ -4,50 +4,42 @@
 
 extends Control
 
-signal loading_complete
-#var scn_menu_inst = preload("res://stages/menu.tscn").instance()
-
-var actual_scene
+var main_scene = "res://main.tscn"
 var loader
-var fl_loader_ready = false
-var fl_just_preload
-var fl_old_scene_freed = true
-var fl_anim_on = false
-var tempo_max = 50 #msec
+var loaded_scene
+
+var min_time = 4 #sec
+var fl_min_time_expired = false
 var wait_frames = 10
 
 func _ready():
-	
-	pass
+	load_main_scene()
 
-func load_next_scene(scene, just_preload = false):
-	fl_just_preload = just_preload
-	actual_scene = utl.n_base()
-	loader = ResourceLoader.load_interactive(scene)
+func load_main_scene():
+	loader = ResourceLoader.load_interactive(main_scene)
 	set_process(true)
 
 func _process(delta):
+	if min_time > 0:
+		min_time -= delta
+	elif !fl_min_time_expired:
+		fl_min_time_expired = true
+	
 	if wait_frames > 0:
 		wait_frames -= 1
 		return
-	if not fl_anim_on:
-#		$anim.play("loading")
-		fl_anim_on = true
-	if not fl_old_scene_freed: #n_sfondo.get_opacity()>=1 and :
-		fl_old_scene_freed = true
-		actual_scene.queue_free()
 	
 	if loader == null: # nel while successivo, se il loader = null non serve più processare
-		set_process(false)
+		update_percentage()
+		if fl_min_time_expired:
+			open_next_scene(loaded_scene)
+			set_process(false)
 		return
 	
 	var err = loader.poll()
-	if err == ERR_FILE_EOF: # caricamento finito
-		var loaded_scene = loader.get_resource()
+	if err == ERR_FILE_EOF: # loading finished
+		loaded_scene = loader.get_resource()
 		loader = null
-		fl_loader_ready = true
-		if fl_just_preload == false:
-			open_next_scene(loaded_scene)
 	elif err == OK:
 		update_percentage()
 	else: # errore durante il caricamento
@@ -55,25 +47,14 @@ func _process(delta):
 		loader = null
 
 func update_percentage():
-	var percentage = float(loader.get_stage()) / loader.get_stage_count()
-	# update animations
-	$progress.value = percentage
-#	var length = $anim.get_current_animation_length()
-#	$anim.seek(percentage * length, true)
+	var percentage = 0
+	if loader == null: percentage = 100
+	else:              percentage = float(loader.get_stage()) / loader.get_stage_count()
+	$bar.value = percentage
 
-func open_next_scene(loaded_scene):
-	fl_old_scene_freed = false
-	actual_scene = loaded_scene.instance()
-	#---------- NEW SCENE SETUP
-	g_mng.add_stage_instances(actual_scene)
-#TODO: calculate navigation_nodes_and_path
-#	naviga_platform.avvia()
-# TODO: Add in_game_menu.tscn or GUI.tscn
-#	utilita.nodo_base().add_child(scn_menu_inst)
-	#---------- ADD NEW SCENE
-	get_node("/root").add_child(actual_scene)
-	emit_signal("loading_complete")
+func open_next_scene(loaded_scene): 
+	get_node("/root").add_child( loaded_scene.instance() )
 	queue_free()
 
 func loading_error():
-	print ("LOADING_SCREEN: !!!Loading error!!!")
+	glb.log_print("LOADING_SCREEN: !!!Loading error!!!")

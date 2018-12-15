@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://assets/btn_off.png" type="Texture" id=2]
@@ -7,22 +7,6 @@
 [ext_resource path="res://tabs/bg.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tabs/swipe_tab.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=7]
-[ext_resource path="res://themes/theme_base.tres" type="Theme" id=8]
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Label
-
-
-func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	var line1 = str(\"Dragging       : \" , glb.fl_dragging)
-	var line2 = str(\"Screen pressed : \" , glb.fl_screen_p)
-	
-	self.text = str( line1 , \"\\n\" , line2)
-"
 
 [node name="main" type="Control"]
 anchor_left = 0.0
@@ -113,7 +97,6 @@ __meta__ = {
 }
 
 [node name="btn" parent="top_bar/btns" instance=ExtResource( 3 )]
-self_modulate = Color( 0.831373, 0.396078, 0.396078, 1 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 102.0
@@ -123,13 +106,10 @@ margin_bottom = 96.0
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 btn_type = null
-col = Color( 0.831373, 0.396078, 0.396078, 1 )
 ico = ExtResource( 4 )
-ico_col = Color( 1, 1, 1, 1 )
-ico_press_color = Color( 1, 0, 0, 1 )
+ico_col = Color( 0.733333, 0.0745098, 0.384314, 1 )
 
 [node name="main_frame" type="Container" parent="."]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -141,6 +121,9 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="bg" parent="main_frame" instance=ExtResource( 5 )]
 editor/display_folded = true
@@ -163,23 +146,4 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="test" type="Label" parent="."]
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -112.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-theme = ExtResource( 8 )
-text = "test"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 1 )
 

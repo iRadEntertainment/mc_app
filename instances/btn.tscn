@@ -81,6 +81,8 @@ __meta__ = {
 btn_type = 0
 col = Color( 1, 1, 1, 1 )
 ico = null
+ico_col = Color( 1, 1, 1, 1 )
+ico_press_color = Color( 1, 0, 0, 1 )
 
 [node name="ico" type="TextureRect" parent="."]
 anchor_left = 0.0

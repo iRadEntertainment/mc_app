@@ -1,7 +1,6 @@
 extends Container
 
 var tab_num = 0
-var an_pos = 0
 
 func _ready():
 	$an_swipe.current_animation = "swipe"
@@ -20,15 +19,12 @@ func swipe(amt):
 
 func assign_parent_mat(node):
 	for N in node.get_children():
+		
 		if N.get_child_count() > 0:
-			print("["+N.get_name()+"]")
 			assign_parent_mat(N)
-		else:
-			print("- "+N.get_name())
 		
 		if N.has_method("set_use_parent_material"):
 			N.use_parent_material = (N.get_name() != "bg")
-#			print("%s assigned: %s"%[N.get_name(), N.use_parent_material])
 
 func _process(delta):
 	if !glb.fl_dragging:

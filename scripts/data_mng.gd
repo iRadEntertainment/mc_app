@@ -10,6 +10,7 @@ var data_path = str(data_dir,"/",data_filename)
 
 #---------- config_files
 var console_log = [] setget _log_updated
+signal log_updated
 
 
 func _ready():

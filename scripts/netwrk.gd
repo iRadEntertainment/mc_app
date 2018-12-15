@@ -10,7 +10,7 @@ const ADDRESS     = "81.4.107.146" #"127.0.0.1" #"81.4.107.146"
 
 func _ready():
 	#connect network signals
-	get_tree().connect("network_peer_packet",self,"_on_packets_received")
+	get_tree().multiplayer.connect("network_peer_packet",self,"_on_packets_received")
 	get_tree().connect("connected_to_server",self,"_on_connection_succeeded")
 	get_tree().connect("connection_failed",self,"_on_connection_failed")
 	
