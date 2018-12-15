@@ -29,7 +29,7 @@ func _process(delta):
 		wait_frames -= 1
 		return
 	
-	if loader == null: # nel while successivo, se il loader = null non serve più processare
+	if loader == null: # loader can be set null from next step -> stop processing
 		update_percentage()
 		if fl_min_time_expired:
 			open_next_scene(loaded_scene)
@@ -42,7 +42,7 @@ func _process(delta):
 		loader = null
 	elif err == OK:
 		update_percentage()
-	else: # errore durante il caricamento
+	else: # loading error
 		loading_error()
 		loader = null
 

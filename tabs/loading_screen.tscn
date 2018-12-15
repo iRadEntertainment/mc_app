@@ -269,7 +269,6 @@ margin_top = 510.0
 margin_right = 480.0
 margin_bottom = 690.0
 rect_min_size = Vector2( 180, 180 )
-rect_rotation = -0.539842
 rect_pivot_offset = Vector2( 90, 90 )
 rect_clip_content = false
 mouse_filter = 1

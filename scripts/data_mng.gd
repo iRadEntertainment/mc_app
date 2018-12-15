@@ -4,7 +4,7 @@
 extends Node
 
 #---------- config_files
-var data_dir  = str(OS.get_system_dir(0),"/metropolissimo_data")
+var data_dir  = str(OS.get_system_dir(0))
 var data_filename = "mc_data.cfg"
 var data_path = str(data_dir,"/",data_filename)
 
