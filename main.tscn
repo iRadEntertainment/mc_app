@@ -125,6 +125,8 @@ size_flags_stretch_ratio = 0.0
 btn_type = null
 col = Color( 0.831373, 0.396078, 0.396078, 1 )
 ico = ExtResource( 4 )
+ico_col = Color( 1, 1, 1, 1 )
+ico_press_color = Color( 1, 0, 0, 1 )
 
 [node name="main_frame" type="Container" parent="."]
 editor/display_folded = true
