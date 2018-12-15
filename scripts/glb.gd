@@ -14,9 +14,10 @@ var fl_screen_p = false
 var fl_dragging = false
 var current_tab = 0
 
+
+#--------------------- debug utilities ---------------------
 func log_print(string):
 	print(string)
-	pass
 
 
 
