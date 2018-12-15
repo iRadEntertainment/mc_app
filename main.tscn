@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://assets/btn_off.png" type="Texture" id=2]
-[ext_resource path="res://assets/btn_connect.png" type="Texture" id=3]
-[ext_resource path="res://tabs/bg.tscn" type="PackedScene" id=4]
-[ext_resource path="res://tabs/swipe_tab.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=6]
-[ext_resource path="res://themes/theme_base.tres" type="Theme" id=7]
+[ext_resource path="res://instances/btn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/btn_connect.png" type="Texture" id=4]
+[ext_resource path="res://tabs/bg.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tabs/swipe_tab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=7]
+[ext_resource path="res://themes/theme_base.tres" type="Theme" id=8]
 
 [sub_resource type="GDScript" id=1]
 
@@ -40,7 +41,6 @@ __meta__ = {
 }
 
 [node name="top_bar" type="Control" parent="."]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -53,8 +53,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="color" type="ColorRect" parent="top_bar"]
+[node name="col" type="ColorRect" parent="top_bar"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -66,6 +69,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.921569, 0.796078, 0.117647, 0.960784 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="btn_shut" type="TextureButton" parent="top_bar"]
 anchor_left = 1.0
@@ -89,7 +95,6 @@ expand = true
 stretch_mode = 3
 
 [node name="btns" type="HBoxContainer" parent="top_bar"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -107,76 +112,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="conn" type="TextureButton" parent="top_bar/btns"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 34.0
-margin_top = 32.0
-margin_right = 98.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
-
-[node name="conn2" type="TextureButton" parent="top_bar/btns"]
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="btn" parent="top_bar/btns" instance=ExtResource( 3 )]
+self_modulate = Color( 0.831373, 0.396078, 0.396078, 1 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 102.0
 margin_top = 32.0
 margin_right = 166.0
 margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
-
-[node name="conn3" type="TextureButton" parent="top_bar/btns"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 170.0
-margin_top = 32.0
-margin_right = 234.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
+size_flags_stretch_ratio = 0.0
+btn_type = null
+col = Color( 0.831373, 0.396078, 0.396078, 1 )
+ico = ExtResource( 4 )
 
 [node name="main_frame" type="Container" parent="."]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -189,11 +140,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="bg" parent="main_frame" instance=ExtResource( 4 )]
+[node name="bg" parent="main_frame" instance=ExtResource( 5 )]
 editor/display_folded = true
 bg_col = Color( 0.541176, 0.819608, 0.352941, 1 )
 
-[node name="swipe_tab" parent="main_frame" instance=ExtResource( 5 )]
+[node name="swipe_tab" parent="main_frame" instance=ExtResource( 6 )]
 
 [node name="swipe_detect" type="Control" parent="."]
 anchor_left = 0.0
@@ -206,7 +157,10 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 6 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="test" type="Label" parent="."]
 anchor_left = 0.0
@@ -220,7 +174,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = ExtResource( 7 )
+theme = ExtResource( 8 )
 text = "test"
 percent_visible = 1.0
 lines_skipped = 0

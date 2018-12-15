@@ -41,3 +41,6 @@ func _on_connection_succeeded():
 func _on_packets_received(id,packet):
 	if id == 1: id = "Server: "
 	$scr/bg/lb_print.text = str($scr/bg/lb_print.text,"\n", id , str( bytes2var(packet) ) )
+
+func send_msg_data(dat, id = 0):
+	get_tree().multiplayer.send_bytes(var2bytes(dat),id)
