@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/btn_off.png" type="Texture" id=2]
 [ext_resource path="res://instances/btn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/btn_connect.png" type="Texture" id=4]
-[ext_resource path="res://tabs/bg.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tabs/swipe_tab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://instances/bg.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tabs/control_panel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=7]
 
 [node name="main" type="Control"]
@@ -129,7 +129,7 @@ __meta__ = {
 editor/display_folded = true
 bg_col = Color( 0.541176, 0.819608, 0.352941, 1 )
 
-[node name="swipe_tab" parent="main_frame" instance=ExtResource( 6 )]
+[node name="control_panel" parent="main_frame" instance=ExtResource( 6 )]
 
 [node name="swipe_detect" type="Control" parent="."]
 anchor_left = 0.0

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/theme_base.tres" type="Theme" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "#inst_lb built-in
+tool
+extends Label
+
+export(bool) var back = false setget _set_back
+export(Color) var col = Color(0.5,0.5,0.5,0.5) setget _set_col
+export (int) var size setget _set_size
+
+func _ready():
+	$bg.visible = back
+	$bg.color = col
+	set(\"theme/default_font/size\", [size,true])
+
+func _set_back(val):
+	if Engine.editor_hint:
+		$bg.visible = val
+func _set_col(val):
+	if Engine.editor_hint:
+		$bg.color = val
+func _set_size(val):
+	if Engine.editor_hint:
+		set(\"theme/default_font/size\", val)"
+
+[node name="inst_lb" type="Label"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 119.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 0, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+text = "test"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 1 )
+back = true
+col = Color( 0.5, 0.5, 0.5, 0.5 )
+size = 16
+
+[node name="bg" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.5, 0.5, 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
+

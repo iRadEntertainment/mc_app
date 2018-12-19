@@ -8,6 +8,7 @@ func _ready():
 	self.set("shader_param/shader_screen_size",get_viewport().size)
 	assign_parent_mat(self)
 	set_process(true)
+	init()
 
 func swipe(amt):
 	var scaled_amt = amt/get_viewport().size.x
@@ -39,4 +40,5 @@ func _process(delta):
 			$an_swipe.seek(lerp(an_pos,target,delta*10),true)
 			if abs(an_pos - target) < 0.01:
 				$an_swipe.seek(target,true)
-			
+
+func init(): pass
