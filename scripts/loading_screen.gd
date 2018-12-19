@@ -8,7 +8,7 @@ var main_scene = "res://main.tscn"
 var loader
 var loaded_scene
 
-var min_time = 4 #sec
+var min_time = 2 #sec
 var fl_min_time_expired = false
 var wait_frames = 10
 

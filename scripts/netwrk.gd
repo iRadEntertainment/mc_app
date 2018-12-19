@@ -18,7 +18,7 @@ func _ready():
 	get_tree().connect("network_peer_disconnected", self, "_on_user_disconnected")
 	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
 
-func connect_to_network():
+func connect_to():
 	var host = NetworkedMultiplayerENet.new()
 	var res = host.create_client(ADDRESS,PORT)
 	
@@ -29,7 +29,7 @@ func connect_to_network():
 	get_tree().set_network_peer(host)
 	glb.net_id = get_tree().multiplayer.get_network_unique_id()
 
-func disconnect_from_network():
+func disconnect_from():
 	get_tree().set_network_peer(null)
 	glb.fl_connected = false
 
@@ -44,11 +44,21 @@ func _on_connection_succeeded():
 	glb.fl_connected = true
 	$btn_bg/btn.text = "disconnect"
 
-func _on_packets_received(id,packet):
-	if id == 1: id = "Server: "
-	$scr/bg/lb_print.text = str($scr/bg/lb_print.text,"\n", id , str( bytes2var(packet) ) )
-
 #----------------- network communications ---------------------
 
+func _on_packets_received(id,packet):
+	#id == 1: id = "Server"
+	glb.log_print( "NETWORK: <- %s - %s"%[ id , bytes2var(packet) ] )
+	if id == 1:
+		cmd_from_server(bytes2var(packet))
+
 func send_msg_data(dat, id = 0):
-	get_tree().multiplayer.send_bytes(var2bytes(dat),id)
+	#id == 0: all peers
+	var err = get_tree().multiplayer.send_bytes(var2bytes(dat),id)
+	if err == OK:
+		glb.log_print( "NETWORK: -> %s - %s"%[ id , dat ] )
+	else:
+		glb.log_print( "NETWORK: unable to send %s - %s\nError: %s"%[ id , dat , err] )
+
+func cmd_from_server(cmd):
+	print("NETWORK: Server commands - %s"%[cmd])
