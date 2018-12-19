@@ -15,7 +15,7 @@ var net_id = -1
 #swipe_detect
 var fl_screen_p = false
 var fl_dragging = false
-var current_tab = 0
+var current_tab = 1
 
 
 #--------------------- console utilities ---------------------

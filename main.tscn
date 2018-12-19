@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://assets/btn_off.png" type="Texture" id=2]
 [ext_resource path="res://instances/btn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/btn_connect.png" type="Texture" id=4]
 [ext_resource path="res://instances/bg.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tabs/control_panel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=7]
+[ext_resource path="res://tabs/swipe_tab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tabs/control_panel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=8]
 
 [node name="main" type="Control"]
 anchor_left = 0.0
@@ -129,7 +130,25 @@ __meta__ = {
 editor/display_folded = true
 bg_col = Color( 0.541176, 0.819608, 0.352941, 1 )
 
-[node name="control_panel" parent="main_frame" instance=ExtResource( 6 )]
+[node name="swipe_tab" parent="main_frame" instance=ExtResource( 6 )]
+
+[node name="control_panel" parent="main_frame" instance=ExtResource( 7 )]
+visible = false
+
+[node name="control_panel2" parent="main_frame" instance=ExtResource( 7 )]
+editor/display_folded = true
+visible = false
+
+[node name="bg" parent="main_frame/control_panel2" index="1"]
+bg_col = Color( 0.92549, 0.458824, 0.886275, 1 )
+
+[node name="ColorRect" parent="main_frame/control_panel2/page" index="0"]
+margin_bottom = 345.0
+color = Color( 0.254902, 0.113725, 0.113725, 1 )
+
+[node name="main" parent="main_frame/control_panel2/page" index="1"]
+margin_top = 349.0
+margin_bottom = 1040.0
 
 [node name="swipe_detect" type="Control" parent="."]
 anchor_left = 0.0
@@ -142,8 +161,10 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+
+[editable path="main_frame/control_panel2"]

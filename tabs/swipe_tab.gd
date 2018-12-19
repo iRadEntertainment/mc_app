@@ -18,6 +18,14 @@ func swipe(amt):
 	$an_swipe.seek(an_pos, true)
 #	prints ("SWIPE TAB: current pos =",$an_swipe.current_animation_position)
 
+func swipe_anim(pos):
+	pos = clamp(pos,0,1)
+	$an_swipe.seek(pos,true)
+
+func get_anim_pos():
+	var an_pos = $an_swipe.current_animation_position
+	return an_pos
+
 func assign_parent_mat(node):
 	for N in node.get_children():
 		
@@ -40,5 +48,10 @@ func _process(delta):
 			$an_swipe.seek(lerp(an_pos,target,delta*10),true)
 			if abs(an_pos - target) < 0.01:
 				$an_swipe.seek(target,true)
+		elif an_pos == 0.5:
+			if glb.current_tab != tab_num:
+				glb.current_tab = tab_num
+				print("current tab = %s"%[glb.current_tab])
+				
 
 func init(): pass
