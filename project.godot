@@ -29,6 +29,7 @@ netwrk="*res://scripts/netwrk.gd"
 
 [debug]
 
+gdscript/warnings/enable=false
 gdscript/warnings/return_value_discarded=false
 
 [display]
@@ -47,4 +48,3 @@ window/stretch/aspect="keep"
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-environment/default_environment="res://default_env.tres"
