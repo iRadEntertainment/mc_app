@@ -1,3 +1,7 @@
+#=======================#
+#    SWIPE_DETECT.GD    #
+#=======================#
+
 extends Control
 
 signal screen_dragged

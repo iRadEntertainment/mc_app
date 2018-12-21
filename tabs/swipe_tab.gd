@@ -1,8 +1,13 @@
+#=======================#
+#      SWIPE_TAB.GD     #
+#=======================#
+
 extends Container
 
 var tab_num = 0
 
 func _ready():
+	set_material(get_material().duplicate()) #set the shader as an instance
 	$an_swipe.current_animation = "swipe"
 	$an_swipe.stop(false)
 	self.set("shader_param/shader_screen_size",get_viewport().size)
@@ -40,7 +45,7 @@ func _process(delta):
 		var an_pos = $an_swipe.current_animation_position
 		if !an_pos in [0,0.5,1]:
 			var target = 0.0
-			var release_treshold = 0.2
+			var release_treshold = 0.25
 			if   an_pos < 0.5 - release_treshold: target = 0.0
 			elif an_pos > 0.5 + release_treshold: target = 1.0
 			else:                                 target = 0.5
