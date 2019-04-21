@@ -53,7 +53,7 @@ func swipe_tab(amt): #transmit swipe to tabs
 	tab.swipe(amt)
 	if amt <0: n_tabs[tab_next].swipe_anim(tab_anim_pos+0.5)
 	if amt >0: n_tabs[tab_prev].swipe_anim(tab_anim_pos-0.5)
-	print("MAIN: swipe anim %s-%s, %s-%s, %s-%s"%[tab_prev,n_tabs[tab_prev].get_anim_pos(),
-												glb.current_tab,n_tabs[glb.current_tab].get_anim_pos(),
-												tab_next,n_tabs[tab_next].get_anim_pos()])
+#	print("MAIN: swipe anim %s-%s, %s-%s, %s-%s"%[tab_prev,n_tabs[tab_prev].get_anim_pos(),
+#												glb.current_tab,n_tabs[glb.current_tab].get_anim_pos(),
+#												tab_next,n_tabs[tab_next].get_anim_pos()])
 	

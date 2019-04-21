@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://assets/btn_off.png" type="Texture" id=2]
@@ -9,50 +9,32 @@
 [ext_resource path="res://tabs/tab_control_panel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tabs/swipe_detect.gd" type="Script" id=8]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.192157, 0.184314, 0.870588, 0.721569 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.184314, 0.870588, 0.321569, 0.729412 )
+
 [node name="main" type="Control"]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="top_bar" type="Control" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 128 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="col" type="ColorRect" parent="top_bar"]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.921569, 0.796078, 0.117647, 0.960784 )
 __meta__ = {
 "_edit_lock_": true
@@ -60,37 +42,18 @@ __meta__ = {
 
 [node name="btn_shut" type="TextureButton" parent="top_bar"]
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -64.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 3
 
 [node name="btns" type="HBoxContainer" parent="top_bar"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_right = 268.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 custom_constants/separation = 4
 alignment = 1
 __meta__ = {
@@ -104,24 +67,26 @@ margin_left = 102.0
 margin_top = 32.0
 margin_right = 166.0
 margin_bottom = 96.0
+focus_mode = 0
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 btn_type = null
 ico = ExtResource( 4 )
 ico_col = Color( 0.733333, 0.0745098, 0.384314, 1 )
 
+[node name="Button" type="Button" parent="top_bar"]
+margin_left = 186.0
+margin_top = -35.0
+margin_right = 391.0
+margin_bottom = 165.0
+custom_styles/pressed = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
 [node name="main_frame" type="Container" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 128.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,16 +101,9 @@ bg_col = Color( 0.541176, 0.819608, 0.352941, 1 )
 [node name="tab_control_panel" parent="main_frame" instance=ExtResource( 7 )]
 
 [node name="swipe_detect" type="Control" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true

@@ -6,8 +6,6 @@
 [ext_resource path="res://instances/inst_lb.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
-
-render_priority = 0
 shader = ExtResource( 2 )
 shader_param/shader_screen_size = Vector2( 780, 1200 )
 shader_param/shift = 0.0
@@ -20,33 +18,18 @@ script = ExtResource( 3 )
 bg_col = Color( 0.458824, 0.92549, 0.847059, 1 )
 
 [node name="page" type="VBoxContainer" parent="." index="2"]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -16.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
 [node name="ColorRect" type="ColorRect" parent="page" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 748.0
 margin_bottom = 388.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.764706, 0.0901961, 0.0901961, 1 )
@@ -60,18 +43,11 @@ text = "login panel"
 back = false
 
 [node name="main" type="Container" parent="page" index="1"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 392.0
 margin_right = 748.0
 margin_bottom = 1168.0
 rect_min_size = Vector2( 0, 128 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
